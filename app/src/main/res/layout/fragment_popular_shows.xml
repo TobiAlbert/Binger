@@ -15,4 +15,11 @@
         tools:listitem="@layout/list_item_tv_show"
         />
 
+    <ProgressBar
+        android:id="@+id/progress_bar_popular"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
 </FrameLayout>

@@ -1,4 +1,4 @@
-package ng.max.binger.fragments
+package ng.max.binger.fragments.popular
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

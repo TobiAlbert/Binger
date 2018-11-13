@@ -1,4 +1,4 @@
-package ng.max.binger.activities
+package ng.max.binger.activities.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.Menu
 import kotlinx.android.synthetic.main.activity_main.*
 import ng.max.binger.R
 import ng.max.binger.adapters.TvShowPagerAdapter
-import ng.max.binger.fragments.AiringTodayFragment
-import ng.max.binger.fragments.PopularShowsFragment
+import ng.max.binger.fragments.airing.AiringTodayFragment
+import ng.max.binger.fragments.popular.PopularShowsFragment
 
 class MainActivity : AppCompatActivity() {
 

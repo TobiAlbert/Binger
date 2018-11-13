@@ -1,20 +1,21 @@
-package ng.max.binger.activities
+package ng.max.binger.activities.details
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_favorites.*
+import kotlinx.android.synthetic.main.activity_details.*
 import ng.max.binger.R
 
-class FavoritesActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorites)
+        setContentView(R.layout.activity_details)
 
         // set support toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // TODO: setup favorite tv shows
+
+        // TODO: setup tv show's details
     }
 }

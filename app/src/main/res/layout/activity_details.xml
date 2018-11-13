@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.DetailsActivity">
+    tools:context=".activities.details.DetailsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -78,13 +78,6 @@
                     android:text="@string/title_genres"
                     android:textStyle="bold" />
 
-                <!--TODO remove includes and add items programmatically from the activity -->
-
-                <include layout="@layout/list_item_genre" />
-
-                <include layout="@layout/list_item_genre" />
-
-                <include layout="@layout/list_item_genre" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -94,15 +87,6 @@
                     android:paddingTop="10dp"
                     android:text="@string/title_production_companies"
                     android:textStyle="bold" />
-
-                <!--TODO remove includes and add items programmatically from the activity -->
-
-                <include layout="@layout/list_item_production_company" />
-
-                <include layout="@layout/list_item_production_company" />
-
-                <include layout="@layout/list_item_production_company" />
-
 
             </com.google.android.flexbox.FlexboxLayout>
 

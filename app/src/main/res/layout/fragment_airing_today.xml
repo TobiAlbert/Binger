@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AiringTodayFragment">
+    tools:context=".fragments.airing.AiringTodayFragment">
 
 
     <android.support.v7.widget.RecyclerView
@@ -14,5 +14,12 @@
         android:paddingEnd="10dp"
         tools:listitem="@layout/list_item_tv_show"
         />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_airing"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

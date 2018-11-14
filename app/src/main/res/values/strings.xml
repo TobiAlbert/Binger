@@ -12,4 +12,6 @@
     <string name="title_favorites">Favorites</string>
     <string name="title_show_details">Tv Show Details</string>
     <string name="title_tv_shows">Tv Shows</string>
+    <string name="sample_production_company_origin">US</string>
+    <string name="sample_production_company_name">Disney</string>
 </resources>

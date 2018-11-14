@@ -16,11 +16,9 @@ abstract class AppDatabase : RoomDatabase() {
 
         private var INSTANCE: AppDatabase? = null
 
-        // TODO: use this function to get database instance
         fun getInstance(context: Context): AppDatabase = synchronized(this) {
             return INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
         }
-
 
         private fun buildDatabase(context: Context) =
                 Room.databaseBuilder(context.applicationContext,

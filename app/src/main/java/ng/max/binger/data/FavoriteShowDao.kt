@@ -1,20 +1,20 @@
 package ng.max.binger.data
 
 import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
+import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import io.reactivex.Observable
+import io.reactivex.Flowable
 
 @Dao
 interface FavoriteShowDao {
 
-    @Insert
-    fun insertFavorite(favoriteShow: FavoriteShow)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertFavorite(favoriteShow: FavoriteShow): Long
 
-    @Delete
-    fun deleteFavorite(id: Int)
+    @Query("DELETE FROM favorite_show WHERE tv_show_id= :id")
+    fun deleteFavorite(id: Int): Int
 
     @Query("SELECT * from favorite_show")
-    fun getFavorites(): Observable<List<FavoriteShow>>
+    fun getFavorites(): Flowable<List<FavoriteShow>>
 }

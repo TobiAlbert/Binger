@@ -4,7 +4,6 @@ import android.arch.persistence.room.*
 import java.util.*
 
 
-@TypeConverters(DateTypeConverter::class)
 @Entity(tableName = "favorite_show", indices = [(Index("id", unique = true))])
 data class FavoriteShow(@PrimaryKey(autoGenerate = false)
                         @ColumnInfo(name = "id")

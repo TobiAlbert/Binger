@@ -3,11 +3,17 @@ package ng.max.binger.data
 import android.arch.persistence.room.TypeConverter
 import java.util.*
 
-open class DateTypeConverter {
+class DateTypeConverter {
 
-    @TypeConverter
-    fun dateToLong(date: Date) = date.time
+    companion object {
 
-    @TypeConverter
-    fun longToDate(long: Long) = Date(long)
+        @TypeConverter
+        @JvmStatic
+        fun dateToLong(date: Date) = date.time
+
+        @TypeConverter
+        @JvmStatic
+        fun longToDate(long: Long) = Date(long)
+
+    }
 }

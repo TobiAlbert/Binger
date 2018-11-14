@@ -13,7 +13,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_airing_today.view.*
 import ng.max.binger.R
-import ng.max.binger.adapters.TvShowsAdapter
+import ng.max.binger.adapters.tvshow.TvShowsAdapter
 import ng.max.binger.data.TvShow
 import ng.max.binger.data.remote.ApiClient
 import ng.max.binger.data.remote.CloudTvShowRepository
@@ -81,7 +81,8 @@ class AiringTodayFragment : Fragment(), FragmentMvpContract.View {
     }
 
     override fun showShows(tvShows: List<TvShow>) {
-        mAdapter.tvShows = tvShows
+        val temp = ArrayList<TvShow>(tvShows)
+        mAdapter.tvShows = temp
     }
 
 }

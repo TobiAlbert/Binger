@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -52,6 +54,7 @@ dependencies {
     def arch_room_version = '1.1.1'
     implementation "android.arch.persistence.room:runtime:$arch_room_version"
     kapt "android.arch.persistence.room:compiler:$arch_room_version"
+    implementation "android.arch.persistence.room:rxjava2:$arch_room_version"
 
     // RxJava library and RxAndroid for Android specific bindings
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'

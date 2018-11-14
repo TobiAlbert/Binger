@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ProgressBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_favorites.*
 import ng.max.binger.R
-import ng.max.binger.adapters.TvShowsAdapter
+import ng.max.binger.adapters.favorite.FavoritesAdapter
+import ng.max.binger.adapters.tvshow.TvShowsAdapter
 import ng.max.binger.data.*
 import ng.max.binger.utils.gone
 import ng.max.binger.utils.invisible
@@ -18,7 +20,7 @@ import ng.max.binger.utils.visible
 class FavoritesActivity : AppCompatActivity(), FavouritesContract.View {
 
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mAdapter: TvShowsAdapter
+    private lateinit var mAdapter: FavoritesAdapter
     private lateinit var mProgressBar: ProgressBar
     private lateinit var mPresenter: FavouritesContract.Presenter
 
@@ -36,18 +38,28 @@ class FavoritesActivity : AppCompatActivity(), FavouritesContract.View {
 
         mProgressBar = progress_bar_favorite
 
-        mAdapter = TvShowsAdapter()
+        mAdapter = FavoritesAdapter()
 
         mRecyclerView = tvShowsFavorite.apply {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(this@FavoritesActivity)
         }
 
-        //TODO: Use DI to pass dependencies
-        val repository = FavoriteRepository(AppDatabase.getInstance(this).favoriteDao)
+        val repository = FavoriteRepository(applicationContext)
         mPresenter = FavoritesPresenter(repository)
         mPresenter.attachView(this)
+        mPresenter.getShows()
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when(item?.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroy() {
@@ -71,7 +83,8 @@ class FavoritesActivity : AppCompatActivity(), FavouritesContract.View {
                 .show()
     }
 
-    override fun showShows(tvShows: List<TvShowDetail>) {
-        mAdapter.tvShows = tvShows
+    override fun showShows(tvShows: List<TvShow>) {
+        val temp = ArrayList<TvShow>(tvShows)
+        mAdapter.tvShows = temp
     }
 }

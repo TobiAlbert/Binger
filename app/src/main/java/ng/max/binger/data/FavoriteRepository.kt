@@ -1,17 +1,21 @@
 package ng.max.binger.data
 
-import io.reactivex.Observable
+import android.content.Context
+import io.reactivex.Flowable
+import io.reactivex.Maybe
 
-class FavoriteRepository(private val favoriteShowDao: FavoriteShowDao):
+class FavoriteRepository(val context: Context):
         TvShowRepository.FavoriteRepository {
 
-    override fun getFavoriteTvShows(): Observable<List<TvShowDetail>> {
-        val favoriteTvShowList = arrayListOf<TvShowDetail>()
-        return favoriteShowDao.getFavorites()
+    private var mFavShowDao: FavoriteShowDao = AppDatabase.getInstance(context).favoriteDao()
+
+    override fun getFavoriteTvShows(): Flowable<List<TvShow>> {
+        val favoriteTvShowList = arrayListOf<TvShow>()
+        return mFavShowDao.getFavorites()
                 .concatMap {
                     favoriteTvShows: List<FavoriteShow> ->
                     for (favoriteTvShow in favoriteTvShows) {
-                        val tvShow = TvShowDetail().apply {
+                        val tvShow = TvShow().apply {
                             id = favoriteTvShow.tvShowId
                             name = favoriteTvShow.name
                             summary = favoriteTvShow.summary
@@ -19,14 +23,24 @@ class FavoriteRepository(private val favoriteShowDao: FavoriteShowDao):
                             voteCount = favoriteTvShow.voteCount
                             posterPath = favoriteTvShow.posterPath
                             backdropPath = favoriteTvShow.backdropPath
-                            numberOfSeasons = favoriteTvShow.latestSeason
-                            numberOfEpisodes = favoriteTvShow.latestEpisode
+                            isLiked = true
                         }
                         favoriteTvShowList.add(tvShow)
                     }
 
-                    Observable.fromArray(favoriteTvShowList)
+                    Flowable.fromArray(favoriteTvShowList)
                 }
+    }
 
+    override fun insertTvShow(favoriteShow: FavoriteShow): Maybe<Long> {
+        return Maybe.fromAction {
+            mFavShowDao.insertFavorite(favoriteShow)
+        }
+    }
+
+    override fun deleteTvShow(id: Int): Maybe<Int> {
+        return Maybe.fromAction {
+            mFavShowDao.deleteFavorite(id)
+        }
     }
 }

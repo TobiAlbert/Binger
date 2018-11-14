@@ -53,8 +53,10 @@ class ProductionCompany {
 
     var name = ""
 
+    @SerializedName("logo_path")
     var logoPath: String? = ""
 
+    @SerializedName("origin_country")
     var originCountry = ""
 }
 
@@ -85,10 +87,13 @@ class TvShowDetail: TvShow() {
 
     var inProduction = false
 
+    @SerializedName("number_of_episodes")
     var numberOfEpisodes = 0
 
+    @SerializedName("number_of_seasons")
     var numberOfSeasons = 0
 
+    @SerializedName("production_companies")
     var productionCompanies = ArrayList<ProductionCompany>()
 
     var seasons = ArrayList<Season>()

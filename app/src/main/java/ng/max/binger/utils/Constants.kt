@@ -10,4 +10,5 @@ object TMDB {
     const val BASE_URL = "https://api.themoviedb.org/3/"
     const val POPULAR_SHOWS = "${BASE_URL}tv/popular"
     const val TODAY_SHOWS = "${BASE_URL}tv/airing_today"
+    const val TV_DETAILS = "${BASE_URL}tv/{tv_id}"
 }

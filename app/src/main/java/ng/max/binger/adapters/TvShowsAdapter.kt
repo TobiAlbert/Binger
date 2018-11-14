@@ -1,6 +1,9 @@
 package ng.max.binger.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item_tv_show.view.*
 import ng.max.binger.R
+import ng.max.binger.activities.details.DetailsActivity
 import ng.max.binger.data.TvShow
 import ng.max.binger.utils.DisplayUtils
 
@@ -62,8 +66,10 @@ class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowViewHolder>() {
         }
 
         private fun onTvShowSelected(tvShow: TvShow) {
-            Toast.makeText(mContext, "${tvShow.name} Selected", Toast.LENGTH_SHORT)
-                    .show()
+            val intent = Intent(mContext, DetailsActivity::class.java).apply {
+                putExtra("tvId",  tvShow.id)
+            }
+            startActivity(mContext, intent, null)
         }
     }
 }

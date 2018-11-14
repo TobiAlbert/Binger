@@ -6,8 +6,9 @@ interface TvShowRepository {
 
     fun getPopularTvShows(): Observable<List<TvShow>>
     fun getAiringTodayShows(): Observable<List<TvShow>>
+    fun getTvShowDetails(tvId: Int): Observable<TvShowDetail>
 
-    interface FavoriteRepository: TvShowRepository {
-        fun getFavoriteTvShows(): Observable<List<TvShow>>
+    interface FavoriteRepository {
+        fun getFavoriteTvShows(): Observable<List<TvShowDetail>>
     }
 }

@@ -72,7 +72,7 @@ class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowViewHolder>(),
             itemView.likeButton.setOnClickListener {
                 onLikeButtonClicked(itemView.likeButton, tvShow, position)
             }
-            
+
             itemView.videoTitle.setOnClickListener { onTvShowSelected(tvShow) }
             itemView.videoDescription.setOnClickListener { onTvShowSelected(tvShow) }
             itemView.videoPoster.setOnClickListener { onTvShowSelected(tvShow) }

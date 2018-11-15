@@ -54,7 +54,7 @@ class FavoritesActivity : AppCompatActivity(), FavouritesContract.View {
         mPresenter.attachView(this)
         mPresenter.getShows()
 
-        //scheduleAlarm()
+        scheduleAlarm()
 
     }
 

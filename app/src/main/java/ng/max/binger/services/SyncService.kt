@@ -11,7 +11,7 @@ import ng.max.binger.data.remote.ApiClient
 /**
  * An [IntentService] subclass for handling asynchronous task requests in
  * a service on a separate handler thread.
- * TODO: Customize class to handle synchronization
+ *
  */
 class SyncService : IntentService("SyncService") {
 
@@ -27,13 +27,7 @@ class SyncService : IntentService("SyncService") {
         favDao.getFavorites()
                 .subscribe({
                     tvShows: List<FavoriteShow> ->
-
-                    if (tvShows.isEmpty()) {
-                        return@subscribe
-                    }
-
-                    tvShows.forEach {
-                        tvShow: FavoriteShow ->
+                    for (tvShow in tvShows) {
                         ApiClient.getTvShowService()
                                 .getTvDetails(tvShow.id)
                                 .subscribe( {
@@ -52,7 +46,6 @@ class SyncService : IntentService("SyncService") {
                                             latestEpisode = tvShowDetail.numberOfEpisodes
 
                                         }
-
                                         favDao.insertFavorite(favoriteShow)
 
                                     }
@@ -63,7 +56,6 @@ class SyncService : IntentService("SyncService") {
                 }) {
 
                 }
-        TODO("Handle action Sync")
     }
 
 }

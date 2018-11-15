@@ -8,7 +8,6 @@ import ng.max.binger.services.SyncService
 
 class BootReceiver : BroadcastReceiver() {
 
-
     companion object {
         const val REQUEST_CODE = 1234
     }
@@ -16,10 +15,8 @@ class BootReceiver : BroadcastReceiver() {
     @SuppressLint("UnsafeProtectedBroadcastReceiver")
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-
         val newIntent = Intent()
         newIntent.setClass(context, SyncService::class.java)
         context.startService(newIntent)
-        //TODO "BootReceiver.onReceive() is not implemented"
     }
 }
